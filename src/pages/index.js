@@ -1,54 +1,51 @@
-import {
-  Link as ChakraLink,
-  Text,
-  Code,
-  List,
-  ListIcon,
-  ListItem,
-} from '@chakra-ui/react'
-import { CheckCircleIcon, LinkIcon } from '@chakra-ui/icons'
 import { Hero } from '../components/Hero'
 import { Container } from '../components/Container'
-import { Main } from '../components/Main'
+import { Stack } from "@chakra-ui/react"
 import { DarkModeSwitch } from '../components/DarkModeSwitch'
-import { CTA } from '../components/CTA'
 import { Footer } from '../components/Footer'
+import { GlobalCase } from '../components/GlobalCase'
+import {CountryCases} from '../components/CountryCases'
 
-const Index = () => (
-  <Container height="100vh">
-    <Hero />
-    <Main>
-      <Text>
-        Example repository of <Code>Next.js</Code> + <Code>chakra-ui</Code>.
-      </Text>
+const Index = (props) => {
+  return(
+  <Container  maxW="100vw" minH="100vh">
+   
+    <Hero title={"Covid Tracker "} />
+    <Stack >
+    
+    <GlobalCase data={props.data.globalCasess} />
+    <CountryCases  data={props.data.countriesCases.data} />
 
-      <List spacing={3} my={0}>
-        <ListItem>
-          <ListIcon as={CheckCircleIcon} color="green.500" />
-          <ChakraLink
-            isExternal
-            href="https://chakra-ui.com"
-            flexGrow={1}
-            mr={2}
-          >
-            Chakra UI <LinkIcon />
-          </ChakraLink>
-        </ListItem>
-        <ListItem>
-          <ListIcon as={CheckCircleIcon} color="green.500" />
-          <ChakraLink isExternal href="https://nextjs.org" flexGrow={1} mr={2}>
-            Next.js <LinkIcon />
-          </ChakraLink>
-        </ListItem>
-      </List>
-    </Main>
+
+
+    </Stack>
+   
 
     <DarkModeSwitch />
     <Footer>
-      <Text>Next ❤️ Chakra</Text>
+    made it by Oscar Ravelo
     </Footer>
-    <CTA />
   </Container>
-)
+)}
 
 export default Index
+
+
+export async function getStaticProps(context){
+  const globalCasess = await fetch(`https://covid2019-api.herokuapp.com/total
+  `).then(r => r.json());
+const countriesCases = await fetch(`https://covid2019-api.herokuapp.com/v2/current
+`).then( r => r.json())
+  const data = { globalCasess, countriesCases }
+  if (!data){
+    return {
+      notFound: true,
+    }
+  }
+ 
+
+  return {
+    props: {data}
+  }
+
+}
