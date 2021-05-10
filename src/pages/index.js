@@ -23,7 +23,7 @@ const Index = (props) => {
 
     <DarkModeSwitch />
     <Footer>
-    made it by Oscar Ravelo
+    made  by Oscar Ravelo
     </Footer>
   </Container>
 )}

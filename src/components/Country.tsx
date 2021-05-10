@@ -1,19 +1,29 @@
-import { Box, Center, Flex } from "@chakra-ui/react";
+import { Box, Center, Flex, Image } from "@chakra-ui/react";
 import React from "react";
 import { Idata } from "./CountryCases";
 
 type Iprops = {
     country: Idata,
     index: number,
+    flagName: string,
 }
 
-export const Country: React.FC<Iprops> = ({country, index }) => (
+export const Country: React.FC<Iprops> = ({country, index, flagName }) => {
+   
+
+     const url = `https://www.countryflags.io/${flagName}/shiny/24.png`
+
+    
+    return(
     <Center key={index} >
-    <Flex m={[3,3]}  borderRadius="md" borderWidth="1px" 
+    <Flex  borderRadius="md" borderWidth="1px" 
       >
                     <Box m={[1,1]}  >
-                    <Box  >location </Box>
-                    <Box>{country.location.substring(0,6)}</Box>
+                    <Box  >{country.location.substr(0,6)}</Box>
+                    <Center>
+
+                    <Image src={url} />
+                    </Center>
                     </Box>
 
                     <Box m={[1,1]}  >
@@ -34,4 +44,4 @@ export const Country: React.FC<Iprops> = ({country, index }) => (
                     
                 </Flex>
                 </Center>
-)
+)}
