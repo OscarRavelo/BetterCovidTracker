@@ -25,18 +25,22 @@ export const CountryCases = ({data: countries}: {data: Idata[]}   ) => {
 
     useEffect(() => {
          setStateCountries([...countries.filter(country => country.location.toLowerCase().includes(filteredCountries.toLowerCase()))])
-         console.log(stateCountries)
     }, [filteredCountries])
     return(
-    <Box maxW="90vw" borderWidth="2px" borderRadius="lg">
-        <Center>
+        <Center mt="20px"   alignSelf={{base: "", sm:"flex-start"}} >
+    <Box maxW={{base:"90vw", sm: "70vw", md:"50vw"}} maxH={{base:"90%", sm:"170px", md:"90%"}}  overflow="auto" borderWidth="2px" borderRadius="lg">
+        <Center >
 
         <Heading>Countries {stateCountries.length}  </Heading>
 
         </Center>
         <Input size="lg" focusBorderColor="pink.900"  onChange={(e) => setFilteredCountries(e.target.value)} placeholder="Search Country" />
-        <Box  mt="15px" minW={{base: "95%", sm: "40vw", md: "80vw"}} overflowX="scroll"  minH="80px" maxH="130px">
-            <Flex  flexDir="row" >
+        <Box mt="15px"   maxH="300px" overflow="auto"  >
+
+       
+        
+            <Flex   flexDir={{base: "row", sm: "column"}}>
+                
             {stateCountries.map((country, index) => 
                 {
                     const flagName = Object.entries(flag).filter(flags =>{
@@ -46,7 +50,7 @@ export const CountryCases = ({data: countries}: {data: Idata[]}   ) => {
                         
                      })
                 return(
-                <Box key={index} marginRight="20px" minW="100%" >
+                <Box key={index} marginRight="20px" >
                     <Center w="100%">
 
                 <Country flagName={flagName.toString().toLowerCase()} key={index} country={country} index={index} />
@@ -65,5 +69,6 @@ export const CountryCases = ({data: countries}: {data: Idata[]}   ) => {
 
 
     </Box>
+    </Center>
 
 )}

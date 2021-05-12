@@ -11,11 +11,13 @@ export interface Idata {
 }
 
 export  const GlobalCase = ({data}: {data: Idata}) => (
-    <Box minW={{base: "90vw", sm: "40vw", md: "80vw"}} maxW="sm" borderWidth="2px" borderRadius="lg">
+        <Center>
+    <Box minW={{base: "90vw", sm: "40vw", md: "70vw", lg: "70vw"}} maxW="sm" borderWidth="2px" borderRadius="lg">
+
         <Flex  flexDir="column">
             <Center bgColor="purple.900">
 
-            <Heading  >Confirmed Cases</Heading>
+            <Heading  >Confirmed Global Cases</Heading>
             </Center>
             <Center>
                 <Box> {data.confirmed}</Box>
@@ -27,4 +29,5 @@ export  const GlobalCase = ({data}: {data: Idata}) => (
 
         
     </Box>
+        </Center>
 )

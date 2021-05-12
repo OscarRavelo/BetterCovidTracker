@@ -12,11 +12,12 @@ export const Country: React.FC<Iprops> = ({country, index, flagName }) => {
    
 
      const url = `https://www.countryflags.io/${flagName}/shiny/24.png`
+     
 
     
     return(
     <Center key={index} >
-    <Flex  borderRadius="md" borderWidth="1px" 
+    <Flex mb="15px"  minW={{base: "", md:"400px"}} borderRadius="md"  borderWidth="1px" 
       >
                     <Box m={[1,1]}  >
                     <Box  >{country.location.substr(0,6)}</Box>
