@@ -10,19 +10,44 @@ import {News} from '../components/News';
 const Index = (props) => {
  
   return(
-  <Container  maxW="100vw" minH="100vh" maxH="100vh">
+    <Box css={{
+      '&::-webkit-scrollbar': {
+        width: '4px',
+      },
+      '&::-webkit-scrollbar-track': {
+        width: '6px',
+      },
+      '&::-webkit-scrollbar-thumb': {
+        background: "black",
+        borderRadius: '0',
+      },
+    }}>
+
+    
+  <Container  maxW="100vw" minH="100vh">
    
-    <Hero title={"Covid Tracker "} />
+    <Hero  title={"Covid Tracker "} />
     <Stack  maxW="100vw"  maxH="90vh" >
     
 
     <GlobalCase data={props.data.globalCasess} />
 
-    <Flex maxH="70vh" flexDir={{base: "column", sm:"row"}}>
+    <Flex maxH="70vh" flexDir={{base: "column", md:"row"}}>
 
 
     <CountryCases  data={props.data.countriesCases.data} />
-    <Box  maxH={{base:"90%", sm:"180px", md: "90%", lg:"90%"}} overflow="auto">
+    <Box css={{
+    '&::-webkit-scrollbar': {
+      width: '4px',
+    },
+    '&::-webkit-scrollbar-track': {
+      width: '6px',
+    },
+    '&::-webkit-scrollbar-thumb': {
+      background: "black",
+      borderRadius: '0',
+    },
+  }} maxW={{base: "100%", md:"50%"}} fontSize={{base: "20px", md:"25px", lg:"30px"}} maxH={{base:"90%", sm:"90%", md: "90%", lg:"90%"}} overflow="auto">
 
     <News news={props.data.news} />
     </Box>
@@ -40,6 +65,7 @@ const Index = (props) => {
     made  by Oscar Ravelo
     
   </Container>
+  </Box>
 )}
 
 export default Index

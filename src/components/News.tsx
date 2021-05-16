@@ -90,9 +90,20 @@ export const News: React.FC<Iprops> = ({news}) => {
 
 
     return (
-        <Box    >
+        <Box css={{
+            "&::-webkit-scrollbar": {
+              width: "0px",
+            },
+            "&::-webkit-scrollbar-track": {
+              width: "0px",
+            },
+            "&::-webkit-scrollbar-thumb": {
+              background: "#4C5270",
+              borderRadius: "0px",
+            },
+          }}   >
         <Center maxH="100%"  >
-        <Box   mt={{base:"20px", sm: ""}}  maxW="90%"  >
+        <Box   mt="20px" paddingTop="40px"  maxW="90%"  >
             <Center>
 
             <Heading>Covid News</Heading>
@@ -100,13 +111,13 @@ export const News: React.FC<Iprops> = ({news}) => {
             <Input onChange={e => setInputCountry(e?.target.value)}  position="sticky" placeholder=" News by Country" />
             <Box mt="15px"  >
                 {
-                    state.map( (article, index) => <Box  borderWidth="1px" key={index}   m={[3,3]}  >
+                    state.map( (article, index) => <Box paddingBottom="20px" marginBottom="15px" borderBottom="2px dashed " key={index}   m={[3,3]}  >
                        <Grid gap="1" templateRows="repeat(2, 1fr)" templateColumns="repeat(5, 1fr)" >
                            
                        
                        
                        <GridItem rowStart={2} rowSpan={2}>
-                           <Img  boxSize="65px" objectFit="fill" src={article.media} />
+                           <Img  boxSize="100%" objectFit="fill" src={article.media} />
                            </GridItem>
                            <GridItem  colSpan={4} >
                                <Center>
